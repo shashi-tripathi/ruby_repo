@@ -1,0 +1,121 @@
+  <%= form_for(@finance,:validate => true,html: { class: "form-horizontal" ,id:"studentForm",method:"post",:multipart => true,'data-parsley-validate' => ''}) do |f| %>
+      <div class="col-sm-offset-4">
+     <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+     <% if @finance.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@finance.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+      <ul>
+      <% @finance.errors.full_messages.each do |msg| %>
+      <li style="color:red"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+   <div class="panel panel-success">
+         <div class="panel-heading">
+               Student Education Details
+         </div>
+   <div class="panel-body">
+        <div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="student[first_name]" class="control-label col-xs-12 col-sm-2">F. Profession</label>
+              <div class="col-sm-3 col-xs-12">
+        <%= f.collection_select(:father_profs, Profession.all, :id, :prof_name,{:include_blank => "Select Profession"},{class: 'form-control input-large'})%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="student[middle_name]" class="col-sm-2 col-xs-12 control-label col-sm-offset-1">M. Profession</label>
+                <div class="col-sm-3 col-xs-12 ">
+        <%= f.collection_select(:mother_profess, Profession.all, :id, :prof_name,{:include_blank => "Select Profession"},{class: 'form-control input-large'})%>
+                </div>
+             </div>
+        </div>
+       <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2">Father Annual Income</label>
+              <div class="col-xs-12 col-sm-3">
+          <%= f.collection_select(:father_income, Income.all, :id, :income_detail,{:include_blank => "Select Income"},{class: 'form-control input-large'})%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_country]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Mother Annual Income</label>
+             <div class="col-xs-12 col-sm-3">
+          <%= f.collection_select(:mother_income, Income.all, :id, :income_detail,{:include_blank => "Select Income"},{class: 'form-control input-large'})%>
+             </div>
+          </div>
+       </div>
+ 	   <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2">Other Income</label>
+              <div class="col-xs-12 col-sm-3">
+          <%= f.collection_select(:other_income, Income.all, :id, :income_detail,{:include_blank => "Select Income"},{class: 'form-control input-large'})%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_country]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Economic Status</label>
+             <div class="col-xs-12 col-sm-3">
+            <%= f.collection_select(:economic_status, Econstatus.all, :id, :econ_status,{:include_blank => "Select Income"},{class: 'form-control input-large'})%>
+             </div>
+          </div>
+       </div>
+ <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[institute_email]" class="control-label col-xs-12 col-sm-2 ">Bank Name</label>
+             <div class="col-xs-12 col-sm-3">
+                  <%= f.text_field :bank_name,required: true,class: 'form-control',placeholder: "Teacher Name",id:'institute_country'%>
+             </div>
+          </div>
+          <div class="custom-row">
+                <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2 col-sm-offset-1">Bank Account</label>
+              <div class="col-xs-12 col-sm-3">
+                 <%= f.text_field :bank_account_no,required: true,class: 'form-control',placeholder: "Your Teacher Email"%>
+              </div>
+          </div>
+       </div>
+
+
+	   <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2">Income Document</label>
+              <div class="col-xs-12 col-sm-3">
+            <%= f.collection_select(:income_document, IncomeDocument.all, :id, :income_doc,{:include_blank => "Select Income Doc Type"},{class: 'form-control input-large'})%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_email]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Upload Document</label>
+             <div class="control-label col-xs-12 col-sm-3">
+                  <%= f.file_field :uploaded_document,required: true,class: '',placeholder: "Institute Email",id:'institute_country'%>
+             </div>
+          </div>
+       </div>
+      <div class="form-group ">
+
+        <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2"></label>
+              <div class="col-xs-12 col-sm-3">
+           
+              </div>
+          </div>
+
+          <div class="custom-row">
+              <label  class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Download Document</label>
+             <label class="control-label col-xs-12 col-sm-3">
+              <a href="/finances/<%=@finance.id%>/download" target="_blank"><%= @finance.filename %></a>
+             </label>
+          </div>
+       </div>
+ 	  
+ 	 
+     </div>
+  <div class="panel-footer ">
+      <button id="btnSubmit" type="submit" class="btn btn-success btn-lg col-sm-offset-9">Save</button>
+      <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+</div>
+</div>
+        
+   
+<% end %>

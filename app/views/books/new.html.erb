@@ -1,0 +1,8 @@
+<h1>New book</h1>
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', books_path %>

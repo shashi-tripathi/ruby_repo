@@ -1,0 +1,49 @@
+<h1>Listing educations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Institute</th>
+      <th>Institute type</th>
+      <th>Institute country</th>
+      <th>Institute state</th>
+      <th>Institue city</th>
+      <th>Institute website</th>
+      <th>Institute email</th>
+      <th>Institute phone</th>
+      <th>Teacher name</th>
+      <th>Teach email</th>
+      <th>Teacher phone</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @educations.each do |education| %>
+      <tr>
+        <td><%= education.grade %></td>
+        <td><%= education.institute %></td>
+        <td><%= education.institute_type %></td>
+        <td><%= education.institute_country %></td>
+        <td><%= education.institute_state %></td>
+        <td><%= education.institue_city %></td>
+        <td><%= education.institute_website %></td>
+        <td><%= education.institute_email %></td>
+        <td><%= education.institute_phone %></td>
+        <td><%= education.teacher_name %></td>
+        <td><%= education.teach_email %></td>
+        <td><%= education.teacher_phone %></td>
+        <td><%= education.user_id %></td>
+        <td><%= link_to 'Show', education %></td>
+        <td><%= link_to 'Edit', edit_education_path(education) %></td>
+        <td><%= link_to 'Destroy', education, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Education', new_education_path %>

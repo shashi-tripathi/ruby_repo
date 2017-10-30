@@ -1,0 +1,117 @@
+<%= javascript_include_tag 'address' %>
+<%= form_for(@address,html: { class: "form-horizontal" ,id:"addressForm",method:"post"}) do |f| %>
+  <div class="col-sm-offset-4">
+     <% if flash[:notice] %>
+         <div class="notice"><%= flash[:notice] %></div>
+   <% end %>
+ <% if @address.errors.any? %>
+       <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+      <li style="color:red"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+ <div class="panel panel-success">
+        <div class="panel-heading">
+               Student Contact Details
+       </div>       
+       <div class="panel-body">
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+
+  <div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="address[country]" class="control-label col-xs-12 col-sm-2">Country</label>
+              <div class="col-sm-3 col-xs-12">
+          <%= f.collection_select(:country, Country.all, :id, :country_name,{:include_blank => "Select Country"},{class: 'form-control input-large'})%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[state]" class="col-sm-1 col-xs-12 control-label col-sm-offset-1">State</label>
+                <div class="col-sm-3 col-xs-12">
+                <%= f.collection_select(:state, @states, :id, :state_name,{:include_blank => "Select State"},{id:'address_state',class: 'form-control input-large'}
+                  )%>
+                </div>
+             </div>
+        </div>
+  		<div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="address[city]" class="control-label col-xs-12 col-sm-2">City</label>
+              <div class="col-sm-3 col-xs-12">
+                  <%= f.collection_select(:city, @cities, :id, :city_name,{:include_blank => "Select City"},{id:'address_city',class: 'form-control input-large'}
+                  )%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[zip]" class="col-sm-1 col-xs-12 control-label col-sm-offset-1">Zip</label>
+                <div class="col-sm-3 col-xs-12">
+                <%= f.text_field :zip,class: 'form-control',placeholder: "Your Zip Code"                 
+                %>
+                </div>
+             </div>
+        </div>
+
+
+
+
+       	<div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="address[house_no]" class="control-label col-xs-12 col-sm-2">House No.</label>
+              <div class="col-sm-3 col-xs-12">
+                 <%= f.text_field :house_no,class: 'form-control',placeholder: "Your House No."%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[street]" class="col-sm-1 col-xs-12 control-label col-sm-offset-1">Street </label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :street,class: 'form-control',placeholder: "Your Street",id:'street'
+                  
+                %>
+                </div>
+             </div>
+        </div>
+        <div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="address[phone]" class="control-label col-xs-12 col-sm-2">Phone</label>
+              <div class="col-sm-3 col-xs-12">
+                 <%= f.text_field :phone,class: 'form-control',placeholder: "(+91) - (phone no)"%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[email]" class="col-sm-1 col-xs-12 control-label col-sm-offset-1">Email</label>
+                <div class="col-sm-3 col-xs-12">
+                <%= f.text_field :email,class: 'form-control',placeholder: "Alternate Email"                 
+                %>
+                </div>
+             </div>
+        </div>
+        <div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="address[email]" class="control-label col-xs-12 col-sm-2">Alt. Phone</label>
+              <div class="col-sm-3 col-xs-12">
+                 <%= f.text_field :alt_phone,class: 'form-control',placeholder: "(+91) - (phone no)"%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[mobile]" class="col-sm-1 col-xs-12 control-label col-sm-offset-1">Mobile</label>
+                <div class="col-sm-3 col-xs-12">
+                <%= f.text_field :mobile,class: 'form-control',placeholder: "(+91)-10 digit no."                 
+                %>
+                </div>
+             </div>
+        </div>
+
+
+        </div>
+       <div class="panel-footer ">
+      <button id="btnSubmit" type="submit" class="btn btn-success btn-lg col-sm-offset-9">Save</button>
+      <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+      </div>
+ </div>
+
+<% end %>
+ 

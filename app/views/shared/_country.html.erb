@@ -1,0 +1,5 @@
+   <%= form_for(@search) do |f| %>
+ <% if !state1.blank? %>
+<%= f.input :state, :collection=>state1.collect{ |s| [s.name,s.id]} %>
+  <% end %>
+    <% end %>

@@ -1,0 +1,47 @@
+<h1>Listing finances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Father profs</th>
+      <th>Mother profess</th>
+      <th>Father income</th>
+      <th>Mother income</th>
+      <th>Other income</th>
+      <th>Economic status</th>
+      <th>Income document</th>
+      <th>Rationa card</th>
+      <th>Bank statement</th>
+      <th>Bank name</th>
+      <th>Bank account no</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @finances.each do |finance| %>
+      <tr>
+        <td><%= finance.father_profs %></td>
+        <td><%= finance.mother_profess %></td>
+        <td><%= finance.father_income %></td>
+        <td><%= finance.mother_income %></td>
+        <td><%= finance.other_income %></td>
+        <td><%= finance.economic_status %></td>
+        <td><%= finance.income_document %></td>
+        <td><%= finance.rationa_card %></td>
+        <td><%= finance.bank_statement %></td>
+        <td><%= finance.bank_name %></td>
+        <td><%= finance.bank_account_no %></td>
+        <td><%= finance.user_id %></td>
+        <td><%= link_to 'Show', finance %></td>
+        <td><%= link_to 'Edit', edit_finance_path(finance) %></td>
+        <td><%= link_to 'Destroy', finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Finance', new_finance_path %>

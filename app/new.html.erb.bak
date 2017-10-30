@@ -1,0 +1,273 @@
+  <%= form_for(@student,html: { class: "form-horizontal" ,id:"studentForm",method:"post"}) do |f| %>
+    <!--
+    <ul class="nav nav-tabs big" id="myTab">
+        <li class="active"><a href="#sectionA" data-toggle="tab">Personal Detail</a></li>
+        <li><a href="#sectionB" data-toggle="tab">Contact Details</a></li>
+        <li ><a href="#sectionC" data-toggle="tab">Education Details</a></li>
+        <li ><a href="#sectionD" data-toggle="tab">Financial Details</a></li>
+     </ul>
+     <select  id="yourSelect" class="col-xs-6 small">
+          <option value="0">Personal Detail</option>
+          <option value="1">Contact Details</option>
+          <option value="2">Education Details</option>
+          <option value="3">Financial Details</option>
+     </select> -->
+     <% if @student.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+      <li style="color:red"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  <!--   
+     <div class="tab-content"> -->
+        <div id="sectionA" class="tab-pane fade in active">
+            <div class="panel panel-success">
+            <div class="panel-heading">
+                 Student Personal Details
+            </div>
+             <div class="panel-body">
+            <div class="form-group required">
+            <div class="custom-row">
+              <label for="student[first_name]" class="control-label col-xs-12 col-lg-2">First Name</label>
+              <div class="col-lg-4 col-xs-12">
+               <%= f.text_field :first_name,class: 'form-control',placeholder: "Your First Name"%>
+              </div>
+              </div>
+              <div class="custom-row">
+                <label for="student[middle_name]" class="col-lg-2 col-xs-12">Middle Name</label>
+                <div class="col-lg-4 col-xs-12">
+                <%= f.text_field :middle_name,class: 'form-control',placeholder: "Your Middle Name",id:'middleName'
+                  
+                %>
+                </div>
+                </div>
+             </div>
+             <div class="form-group ">
+             <div class="custom-row">
+             <label for="student[last_name]" class="control-label ccol-xs-12 col-lg-2">Last Name</label>
+                <div class="col-xs-12 col-lg-4">
+                 <%= f.text_field :last_name,class: 'form-control',placeholder: "Your Last Name"%>
+                </div>
+                </div>
+               <div class="custom-row">
+                <label for="student[dob]" class="control-label col-xs-12 col-lg-2">Birth Date</label>
+                <div class="col-xs-12 col-lg-4">
+                  <%= f.text_field :dob,class: 'form-control',placeholder: "Date of Birth(MM/DD/YYYY)",id:'datepicker'%>
+                </div>
+             </div>
+             </div>
+            <div class="form-group required">
+            <div class="custom-row">
+            <label for="student[gender]" class="control-label col-xs-12 col-lg-2">Gender</label>
+             <div class="btn-group-sm col-md-4 col-xs-12" data-toggle="buttons">
+               <div>
+                  <label class="btn btn-info">
+                  <%= f.radio_button(:gender, "1") %>Female
+                  </label>
+                  <label class="btn btn-info">
+                   <%= f.radio_button(:gender, "2") %>
+                   Male
+                  </label>
+              </div>
+              </div>
+             </div> 
+             <div class="custom-row">
+               <label for="student[sibling]" class="control-label col-xs-12 col-lg-2">Sibling</label>
+             <div class="btn-group-sm col-md-4 col-xs-12 " data-toggle="buttons">
+               <div >
+                  <label class="btn btn-info">
+                     <%= f.radio_button(:sibling, "1") %>Yes
+                  </label>
+                  <label class="btn btn-info">
+                    <%= f.radio_button(:sibling, "2") %>No
+                  </label>
+              </div>
+              </div>
+             </div> 
+            </div>
+
+             <div id="sibling1" class="form-group ">
+                <label for="nameField" class="col-xs-12 col-lg-2">Sibling First Name</label>
+                <div class="col-lg-4 col-xs-12">
+                 <%= f.text_field :s_first_name,class: 'form-control',placeholder: "Sibling First Name",id:'sfirstname'%>
+                </div>
+                <label for="nameField" class="col-lg-2 col-xs-12">Sibling Middle Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :s_middle_name,class: 'form-control',placeholder: "Sibling Middle Name",id:'smiddlename'%>
+                
+                </div>
+            </div>
+            <div id="sibling2" class="form-group ">
+                <label for="nameField" class="col-xs-12 col-lg-2">Sibling Last Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :s_last_name,class: 'form-control',placeholder: "Sibling Last Name",id:'slastname'%>
+                </div>
+                <label for="student[s_dob]" class="col-lg-2 col-xs-12">Sibling Birth Date</label>
+                <div class="col-lg-4 col-xs-12">
+                 <%= f.text_field :s_dob,class: 'form-control',placeholder: "Sibling Birth Date(MM/DD/YYYY)",id:'datepicker1'%>
+                </div>
+            </div>
+
+
+              <div class="form-group required">
+              <div class="custom-row">
+                <label for="student[f_first_name]" class="control-label col-xs-12 col-lg-2">Father First Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :f_first_name,class: 'form-control',placeholder: "Father First Name",id:'ffirstname'%>
+                   
+                </div>
+              </div>
+            <div class="custom-row">
+                <label for="nameField" class="col-lg-2 col-xs-12">Father Middle Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :f_middle_name,class: 'form-control',placeholder: "Father Middle Name",id:'fmiddlename'%>
+                </div>
+            </div>
+          </div>
+
+              <div class="form-group required">
+              <div class="custom-row">
+                <label for="nameField" class="control-label col-xs-12 col-lg-2">Father Last Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :f_last_name,class: 'form-control',placeholder: "Father Last Name",id:'flastname'%>
+                </div>
+                </div>
+              <div class="custom-row">
+                <label for="student[f_dob]" class="control-label col-lg-2 col-xs-12">Father Birth Date</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :f_dob,class: 'form-control',placeholder: "Father Birth Date(MM/DD/YYYY)",id:'datepicker2'%>
+                </div>
+              </div>
+            </div>
+
+              <div class="form-group required">
+              <div class="custom-row">
+                <label for="nameField" class="control-label col-xs-12 col-lg-2">Mother First Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :m_first_name,class: 'form-control',placeholder: "Mother First Name",id:'mfirstname'%>
+                </div>
+                </div>
+              <div class="custom-row">
+                <label for="nameField" class="col-lg-2 col-xs-12">Mother Middle Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :s_middle_name,class: 'form-control',placeholder: "Mother Middle Name",id:'mmiddlename'%>
+                
+                </div>
+              </div>
+            </div>
+             <div class="form-group required">
+            <div class="custom-row">
+                <label for="nameField" class="control-label col-xs-12 col-lg-2">Mother Last Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :m_last_name,class: 'form-control',placeholder: "Mother Last Name",id:'mlastname'%>
+                </div>
+              </div>
+            <div class="custom-row">
+                <label for="student[m_dob]" class="control-label col-lg-2 col-xs-12">Mother Birth Date</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :m_dob,class: 'form-control',placeholder: "Mother Birth Date(MM/DD/YYYY)",id:'datepicker3'%>
+                </div>
+            </div>
+          </div>
+              <div class="form-group required">
+            <div class="custom-row">
+                <label for="student_ref1_name" class="control-label col-xs-12 col-lg-2">Reference1 Name</label>
+                <div class="col-lg-4 col-xs-12">
+               <%= f.text_field :ref1_name,class: 'form-control',placeholder: "Reference1 Name" %>
+               </div>   
+              </div>
+            <div class="custom-row">
+                <label for="student_ref1_relation" class="control-label col-lg-2 col-xs-12">Reference1 Relation</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :ref1_relation,class: 'form-control',placeholder: "Reference1 Relation"%>
+               </div>
+            </div>
+            </div>
+              <div class="form-group">
+                <label for="nameField" class="control-label col-xs-12 col-lg-2">Reference2  Name</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :ref2_name,class: 'form-control',placeholder: "Reference2 Name",id:'ref2name'%>
+                </div>
+                <label for="nameField" class="col-lg-2 col-xs-12">Reference2 Relation</label>
+                <div class="col-lg-4 col-xs-12">
+                   <%= f.text_field :ref2_relation,class: 'form-control',placeholder: "Reference2 Relation",id:'ref2relation'%>
+                 
+                </div>
+            </div>
+                       </div>
+         </div>
+        </div>
+   
+         <div id="sectionB" class="tab-pane fade">
+            <h3 class="col-xs-12">Student Contact Details</h3>
+            <div class="form-group ">
+                <label for="nameField" class="col-xs-12 col-md-1">First Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="text" class="form-control" id="nameField"
+                    placeholder="Your First Name" />
+                </div>
+                <label for="nameField" class="col-md-1 col-xs-12">Middle Name</label>
+                <div class="col-md-3 col-xs-12">
+                  <input type="text" class="form-control" id="nameField"
+                   placeholder="Your Middle Name" />
+                </div>
+                <label for="emailField" class="col-md-1 col-xs-12">Last Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="email" class="form-control" id="emailField"
+                    placeholder="Your Last Name" />
+                </div>
+            </div>
+         </div>
+
+          <div id="sectionC" class="tab-pane fade">
+            <h3 class="col-xs-12">Student Educational Details</h3>
+            <div class="form-group ">
+                <label for="nameField" class="col-xs-12 col-md-1">First Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="text" class="form-control" id="nameField"
+                    placeholder="Your First Name" />
+                </div>  
+                <label for="nameField" class="col-md-1 col-xs-12">Middle Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="text" class="form-control" id="nameField"
+                   placeholder="Your Middle Name" />
+                </div>
+                <label for="emailField" class="col-md-1 col-xs-12">Last Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="email" class="form-control" id="emailField"
+                    placeholder="Your Last Name" />
+                </div>
+            </div>
+         </div>
+
+          <div id="sectionD" class="tab-pane fade">
+            <h3 class="col-xs-12">Student Financial Details</h3>
+            <div class="form-group ">
+                <label for="nameField" class="col-xs-12 col-md-1">First Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="text" class="form-control" id="nameField"
+                    placeholder="Your First Name" />
+                </div>
+                <label for="nameField" class="col-md-1 col-xs-12">Middle Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="text" class="form-control" id="nameField"
+                   placeholder="Your Middle Name" />
+                </div>
+                <label for="emailField" class="col-md-1 col-xs-12">Last Name</label>
+                <div class="col-md-3 col-xs-12">
+                    <input type="email" class="form-control" id="emailField"
+                    placeholder="Your Last Name" />
+                </div>
+            </div>
+          <!--</div>-->
+         <div class="col-xs-10 col-xs-offset-2">
+            <button id="btnSubmit" type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+         </div>
+       </div>  
+<% end %>

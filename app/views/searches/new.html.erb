@@ -1,0 +1,68 @@
+<%= javascript_include_tag 'search' %>
+<%= form_for(@search,:remote=>true,html: { class: "form-horizontal" ,id:"searchForm",method:"post"}) do |f| %>
+ 
+ <div class="panel panel-success">
+        <div class="panel-heading">
+               Search Form
+       </div>       
+       <div class="panel-body">
+        <div id="hello"></div>
+<%= f.hidden_field :user_id, :value => session[:user_id] %>
+ <div class="form-group">
+           <div class="custom-row">
+              <label for="personal_details[country]" class="control-label col-xs-12 col-sm-2">Country</label>
+              <div class="col-sm-4 col-xs-12">
+              <%= f.collection_select(:country, Country.all, :id, :country_name,{pr8ompt: "Select Country"},{class: 'form-control input-large'})%>
+
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[state]" class="col-sm-2 col-xs-12">State</label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.collection_select(:state, @states, :id, :state_name,{prompt: "Select State"},{id:'search_state',class: 'form-control input-large'}
+                  )%>
+                </div>
+             </div>
+        </div>
+  		<div class="form-group">
+           <div class="custom-row">
+              <label for="address[city]" class="control-label col-xs-12 col-sm-2">City</label>
+              <div class="col-sm-4 col-xs-12">
+                 <%= f.collection_select(:city, @cities, :id, :city_name,{prompt: "Select City"},{id:'search_city',class: 'form-control input-large'}
+                  )%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[zip]" class="col-sm-2 col-xs-12">Zip</label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :zip,class: 'form-control',placeholder: "Your Zip Code" ,id:'zip'               
+                %>
+                </div>
+             </div>
+        </div>
+       	<div class="form-group">
+           <div class="custom-row">
+              <label for="address[house_no]" class="control-label col-xs-12 col-sm-2">User Type</label>
+              <div class="col-sm-4 col-xs-12">
+               <%= f.collection_select(:user_type, UserType.all, :id, :desc,{prompt: "Select User Type"},{class: 'form-control input-large'})%>
+
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[street]" class="col-sm-2 col-xs-12">Street </label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :distance,class: 'form-control',placeholder: "Your Street",id:'street'
+                  
+                %>
+                </div>
+             </div>
+        </div>
+        </div>
+        <div class="panel-footer ">
+     	 <button id="btnSubmit" type="submit" class="btn btn-success btn-sm ">Submit</button>
+    	  <button type="reset" class="btn btn-danger btn-sm">Reset</button>
+	  </div>
+ </div>
+
+<% end %>
+ 

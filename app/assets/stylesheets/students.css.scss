@@ -1,0 +1,267 @@
+// Place all the styles related to the Students controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+}
+
+
+
+
+
+
+.cors{
+ width:100%;
+ max-height: 180px !important;
+}
+
+
+body{
+  font: normal 1.5em Cambria, Georgia, serif !important;
+   width: 100%;
+}
+
+
+@media screen and (max-width:768px){
+  .small{
+    display:block;
+    margin-top: 5px;
+  }
+   .big{
+    display:none;
+  }
+}
+@media screen and (min-width:768px){
+  .big{
+    display:block;
+  }
+  .small{
+    display:none;
+  }
+}
+
+@media all and (max-width: 600px){
+  #banner,#rightbar{
+    display:none;
+  }
+  #menu{
+    margin-top:0px;
+  }
+  
+}
+
+.form-control[class=form-control] {
+
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px ;
+  padding-right: 5px !important;
+  padding-left: 5px !important;
+}
+
+.btn{
+  height: 2.3em;
+}
+
+.navbar-default {
+background-color: #0066b3 !important;
+}
+
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: #f7d72b !important;
+background-color: #800517 !important;
+}
+.navbar-default .navbar-brand {
+color: #f7d72b !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+color: #FFFFFF !important;
+}
+
+.navbar {
+position: relative !important;
+min-height: 50p !importantx;
+margin-bottom: 2px !important;
+border: 1px solid transparent !important;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+    text-decoration: none;
+    background: #FFFFFF;
+    list-style: none;
+}
+
+.selected{
+   background-color: #FF0000 !important;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+     background: #eaf4f8;
+
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #395d84;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+#sidebar-wrapper {
+  margin-left:-42px;
+  margin-right:-23px;
+}
+
+#sidebar-wrapper li {
+ border:0 lightgrey solid;
+ border-bottom-width:1px;
+}
+
+#content{
+padding-left:20px !important;
+overflow:hidden;
+color:#0066b3;
+}
+
+#bestCarsCarousel{
+  
+ margin-bottom:20px; 
+}
+
+img.rightimage {
+ width:100%;
+ height:100%; 
+}
+
+
+p.right{
+  padding:2px;
+}
+
+
+
+#rightbar{
+  background:#FFFFFF;
+  padding-top:0px;
+  margin-left:0px;
+  padding-left:10px;
+}
+
+
+div#sibling1{
+  display:none;
+}
+div#sibling2{
+  display:none;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+.control-label{
+  text-align: left !important;
+  color:grey !important;
+  font-weight:Normal;
+}
+
+.custom-row{
+ } 
+
+.panel-footer{
+  background-color:#FFFFFF !important;
+  border-top:0px !important;
+
+}
+
+
+
+.space-top{
+   margin-top:10px;
+
+}
+
+.error{
+  border:1px solid #FF0000 !important;
+}
+.header{
+   height:100px;
+}
+.menu-header{
+   margin-top:-20px;
+}
+
+.page{
+   oveflow:scroll;
+}
+
+
+.footer-row {
+    border-top: 1px solid #990000;
+    position: relative; 
+
+ }
+.footer{
+  width:100%;
+  max-height: 50px !important;
+  }
+
+  .footer-text{
+   position: absolute; 
+   top: 15px; 
+   text-align:center;
+   width: 100%; 
+  }
+.home{
+  width:100%;
+  height:auto;
+}
+.notice{
+  color:#ffd700;
+}
+
+/*
+background-color:#438D80 !important;
+*/
+.panel-heading{
+background-color:#ff8370 !important;
+color:#FFFFFF !important;
+  
+}
+.btn-success{
+  background-color:#e0e593 !important;
+  color:#612759 !important;
+}
+.btn-danger{
+  background-color:#e0e593 !important;
+  color:#612759 !important;
+}

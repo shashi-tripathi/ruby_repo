@@ -1,0 +1,60 @@
+<h3>Send Email </h3>
+<div class="col-sm-offset-4">
+<% if flash[:notice] %>
+         <div style="color:green"><%= flash[:notice] %></div>
+   <% end %>
+ </div>
+<%= form_for(@contact,html: { class: "form-horizontal" ,id:"emailForm",method:"post"}) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="panel panel-success">
+         <div class="panel-heading">
+               Send Email Details
+         </div>
+<div class="panel-body">
+	 <div class="form-group required">
+	           <div class="custom-row col-sm-offset-1">
+	              <label for="personal_detail[first_name]" class="control-label col-xs-12 col-sm-2">Subject</label>
+	              <div class="col-sm-7 col-xs-12">
+	                 <%= f.text_field :sent_from,class: 'form-control',placeholder: "Email Subject"%>
+	              </div>
+	            </div>
+	 </div>
+   
+	<div class="form-group">
+	           <div class="custom-row col-sm-offset-1">
+	              <label for="personal_detail[first_name]" class="control-label col-xs-12 col-sm-2">CC</label>
+	              <div class="col-sm-9 col-xs-12">
+	                 <%= f.text_field :sent_to,class: 'form-control',placeholder: "copy recipeint"%>
+	              </div>
+	            </div>
+	 </div>
+	 <div class="form-group required">
+	           <div class="custom-row col-sm-offset-1">
+	              <label for="personal_detail[first_name]" class="control-label col-xs-12 col-sm-2">Message</label>
+	              <div class="col-sm-9 col-xs-12">
+	                 <%= f.text_area :message,:cols => 200, :rows => 10,class: 'form-control',placeholder: "Type Your  Message"%>
+	              </div>
+	            </div>
+	 </div>
+
+  <div class="panel-footer ">
+      <button id="btnSubmit" type="submit" class="btn btn-success btn-lg col-sm-offset-9">Send Email</button>
+       <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+      
+</div>
+  
+ 
+</div>
+</div>
+<% end %>
+

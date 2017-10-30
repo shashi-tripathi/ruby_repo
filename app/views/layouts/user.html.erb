@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tution India Appllication </title>
+<%= stylesheet_link_tag "application", media: "all" %>
+<%= javascript_include_tag "application" %>
+
+<%= csrf_meta_tags %>
+</head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+          <%= render "shared/menu" %>
+      </div>
+      <div class="row">
+          <%= render "shared/banner" %>
+      </div>
+      <div  class="row"> 
+            <div id="content" class="col-lg-8">
+               <%= yield %>
+            </div>
+             <div id="rightbar" class="col-lg-2">
+                <%= render "shared/rightbar" %>
+            </div>
+             <div id="rightbar" class="col-lg-2">
+                <%= render "shared/rightbar" %>
+            </div>
+          </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<%= form_for(@address,html: { class: "form-horizontal" ,id:"addressForm",method:"post"}) do |f| %>
+ <% if @address.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+      <li style="color:red"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+ <div class="panel panel-success">
+       <div class="panel-heading">
+               Student Contact Details
+       </div>       
+       <div class="panel-body">
+<%= f.hidden_field :student_id, :value => session[:user_id] %>
+  <div class="form-group required">
+           <div class="custom-row">
+              <label for="address[country]" class="control-label col-xs-12 col-sm-2">Country</label>
+              <div class="col-sm-4 col-xs-12">
+                 <%= f.text_field :country,class: 'form-control',placeholder: "Your Country "%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[state]" class="col-sm-2 col-xs-12">State</label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :state,class: 'form-control',placeholder: "Your State"                 
+                %>
+                </div>
+             </div>
+        </div>
+  		<div class="form-group required">
+           <div class="custom-row">
+              <label for="address[city]" class="control-label col-xs-12 col-sm-2">City</label>
+              <div class="col-sm-4 col-xs-12">
+                 <%= f.text_field :city,class: 'form-control',placeholder: "Your City "%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[zip]" class="col-sm-2 col-xs-12">Zip / Pin Code</label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :zip,class: 'form-control',placeholder: "Your Zip Code"                 
+                %>
+                </div>
+             </div>
+        </div>
+
+
+
+
+       	<div class="form-group required">
+           <div class="custom-row">
+              <label for="address[house_no]" class="control-label col-xs-12 col-sm-2">House No.</label>
+              <div class="col-sm-4 col-xs-12">
+                 <%= f.text_field :house_no,class: 'form-control',placeholder: "Your House No."%>
+              </div>
+            </div>
+            <div class="custom-row">
+                <label for="address[street]" class="col-sm-2 col-xs-12">Street </label>
+                <div class="col-sm-4 col-xs-12">
+                <%= f.text_field :street,class: 'form-control',placeholder: "Your Street",id:'street'
+                  
+                %>
+                </div>
+             </div>
+        </div>
+        </div>
+        <div class="panel-footer ">
+     	 <button id="btnSubmit" type="submit" class="btn btn-success btn-sm ">Submit</button>
+    	  <button type="reset" class="btn btn-danger btn-sm">Reset</button>
+	  </div>
+ </div>
+
+<% end %>
+ 

@@ -1,0 +1,138 @@
+ <%= javascript_include_tag 'education' %>
+  <%= form_for(@education,html: { class: "form-horizontal" ,id:"studentForm",method:"post"}) do |f| %>
+  <div class="col-sm-offset-4">
+     <% if flash[:notice] %>
+        <div class="notice"><%= flash[:notice] %></div>
+     <% end %>
+       <% if @education.errors.any? %>
+           <div id="error_explanation">
+              <h2><%= pluralize(@education.errors.count, "error") %>
+              prohibited this user from being saved:</h2>
+                <ul>
+                <% @education.errors.full_messages.each do |msg| %>
+                <li style="color:red"><%= msg %></li>
+                <% end %>
+                </ul>
+          </div>
+      <% end %>
+ </div>
+   <div class="panel panel-success">
+         <div class="panel-heading">
+               Student Education Details
+         </div>
+   <div class="panel-body">
+        <div class="form-group required">
+           <div class="custom-row col-sm-offset-1">
+              <label for="student[first_name]" class="control-label col-xs-12 col-sm-2">Grade</label>
+              <div class="col-sm-3 col-xs-12">
+              <%= f.collection_select(:grade, StudentGrade.all, :id, :grade_name,{:include_blank => "Select Grade"},{class: 'form-control input-large'})%>
+              </div>
+            </div>
+            <div class="custom-row ">
+                <label for="student[middle_name]" class="col-sm-offset-1 col-sm-2 col-xs-12 control-label">Institute Type</label>
+                <div class="col-sm-3 col-xs-12">
+                <%= f.collection_select(:institute_type, SchoolType.all, :id, :desc,{:include_blank => "Select Institute"},{class: 'form-control input-large'})%>
+                </div>
+             </div>
+        </div>
+       <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label col-xs-12 col-sm-2">Institute Name</label>
+              <div class="col-xs-12 col-sm-3">
+                 <%= f.text_field :institute,class: 'form-control',placeholder: "Your Institute Type"%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_country]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Institute Country</label>
+             <div class="col-xs-12 col-sm-3">
+             <%= f.collection_select(:institute_country, Country.all, :id, :country_name,{:include_blank => "Select Country"},{id:'education_country',class: 'form-control input-large'})%>
+             </div>
+          </div>
+       </div>
+ 	   <div class="form-group">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[institute_state]" class="control-label ccol-xs-12 col-sm-2">Institute State</label>
+              <div class="col-xs-12 col-sm-3">
+            <%= f.collection_select(:institute_state, @states, :id, :state_name,{:include_blank => "Select State"},{id:'education_state',class: 'form-control input-large'}
+                  )%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_country]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Institute City</label>
+             <div class="col-xs-12 col-sm-3">
+            <%= f.collection_select(:institue_city, @cities, :id, :city_name,{:include_blank => "Select City"},{id:'education_city',class: 'form-control input-large'}
+                  )%>
+             </div>
+          </div>
+       </div>
+
+      <div class="form-group">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[institute_state]" class="control-label ccol-xs-12 col-sm-2">Institute Zip</label>
+              <div class="col-xs-12 col-sm-3">
+             <%= f.text_field :institue_zip,class: 'form-control',placeholder: "Institute Zip code"%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_country]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Institute Address</label>
+             <div class="col-xs-12 col-sm-3">
+           <%= f.text_field :institute_stree,class: 'form-control',placeholder: "Institute Street Address" %>
+             </div>
+          </div>
+       </div>
+
+
+	   <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2">Institute Website</label>
+              <div class="col-xs-12 col-sm-3">
+                 <%= f.text_field :institute_website,class: 'form-control',placeholder: "Your Institute Website"%>
+              </div>
+          </div>
+          <div class="custom-row">
+            <label for="student[institute_email]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Institute Email</label>
+             <div class="col-xs-12 col-sm-3">
+                  <%= f.text_field :institute_email,class: 'form-control',placeholder: "Institute Email",id:'institute_country'%>
+             </div>
+          </div>
+       </div>
+
+ 	   <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label col-xs-12 col-sm-2">Inst Phone No.</label>
+              <div class="col-xs-12 col-sm-3">
+                 <%= f.text_field :institute_phone,class: 'form-control',placeholder: "Your Institute Phone"%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_email]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Teacher Name</label>
+             <div class="col-xs-12 col-sm-3">
+                  <%= f.text_field :teacher_name,class: 'form-control',placeholder: "Teacher Name",id:'institute_country'%>
+             </div>
+          </div>
+       </div>
+ 	   <div class="form-group ">
+          <div class="custom-row col-sm-offset-1">
+              <label for="student[last_name]" class="control-label ccol-xs-12 col-sm-2">Teacher Email</label>
+              <div class="col-xs-12 col-sm-3">
+                 <%= f.text_field :teach_email,class: 'form-control',placeholder: "Your Teacher Email"%>
+              </div>
+          </div>
+          <div class="custom-row">
+              <label for="student[institute_email]" class="control-label col-xs-12 col-sm-2 col-sm-offset-1">Teacher Phone</label>
+             <div class="col-xs-12 col-sm-3">
+                  <%= f.text_field :teacher_phone,class: 'form-control',placeholder: "Teacher Phone",id:'institute_country'%>
+             </div>
+          </div>
+       </div>
+
+
+     </div>
+  <div class="panel-footer ">
+      <button id="btnSubmit" type="submit" class="btn btn-success btn-lg col-sm-offset-9">Save</button>
+      <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+</div>
+</div>
+
+   
+<% end %>

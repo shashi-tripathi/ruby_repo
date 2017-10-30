@@ -1,0 +1,59 @@
+<%= form_for(@user, html: { class: "form-horizontal" ,id:"signupForm",method:"post"}) do |f| %>
+<div class="panel panel-success">
+         <div class="panel-heading">
+            Sign Up
+         </div>
+<div class="col-lg-offset-3 col-lg-6 space-top">
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<div class="panel-body">
+  <div class="form-group required">
+    <label for="user[email]" class="control-label col-xs-12 col-lg-offset-1 col-lg-3 text-right">Email</label>
+     <div class="col-lg-6 col-xs-12">
+			<%= f.text_field :email,class: 'form-control input-large',placeholder: "Email Address" %>
+	 </div>
+	 <div class="col-lg-offset-2"></div>
+  </div>
+  <div class="form-group required">
+    <label for="user[password]" class="control-label col-xs-12 col-lg-offset-1 col-lg-3 text-right">Password</label>
+ 		<div class="col-lg-6 col-xs-12">
+			<%= f.password_field :password,class: 'form-control input-large',placeholder: "Password"%>
+		</div>
+		<div class="col-lg-offset-2"></div>
+   </div>
+   <div class="form-group required">
+    <label for="user[password_confirmation]" class="control-label col-xs-12 col-lg-offset-1 col-lg-3 text-right">Confirm Password</label>
+ 		<div class="col-lg-6 col-xs-12">
+			<%= f.password_field :password_confirmation,class: 'form-control input-large',placeholder: "Confirmation Password"%>
+		</div>
+		<div class="col-lg-offset-2"></div>
+   </div>
+    <div class="form-group required">
+    <label for="'user[user_type_id]'" class="control-label col-xs-12 col-lg-offset-1 col-lg-3 text-right">User Type</label>
+ 		<div class="col-lg-6 col-xs-12">
+			<%= f.collection_select(:user_type_id, UserType.all, :id, :description,{prompt: "Select User Type"},{class: 'form-control input-large'})%>
+		</div>
+		<div class="col-lg-offset-2"></div>
+   </div>
+   </div>
+ <div class="panel-footer ">
+      <%= f.submit "Sign Up", class: "col-lg-offset-4 btn btn-large btn-success" %>
+      <button type="reset" class="btn btn-danger btn-large">Reset</button>
+  </div>
+ </div>
+ <div class="col-lg-offset-8 col-lg-6 col-xs-12">Already a User 
+ 	<%= link_to 'Sign in here', '/signin' %>
+ </div>
+<% end %>
+
+

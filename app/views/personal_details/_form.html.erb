@@ -1,0 +1,105 @@
+<%= form_for(@personal_detail) do |f| %>
+  <% if @personal_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@personal_detail.errors.count, "error") %> prohibited this personal_detail from being saved:</h2>
+
+      <ul>
+      <% @personal_detail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_name %><br>
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.check_box :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :sibling %><br>
+    <%= f.check_box :sibling %>
+  </div>
+  <div class="field">
+    <%= f.label :s_first_name %><br>
+    <%= f.text_field :s_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :s_middle_name %><br>
+    <%= f.text_field :s_middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :s_last_name %><br>
+    <%= f.text_field :s_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :s_dob %><br>
+    <%= f.date_select :s_dob %>
+  </div>
+  <div class="field">
+    <%= f.label :f_first_name %><br>
+    <%= f.text_field :f_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :f_middle_name %><br>
+    <%= f.text_field :f_middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :f_last_name %><br>
+    <%= f.text_field :f_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :f_dob %><br>
+    <%= f.date_select :f_dob %>
+  </div>
+  <div class="field">
+    <%= f.label :m_first_name %><br>
+    <%= f.text_field :m_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :m_middle_name %><br>
+    <%= f.text_field :m_middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :m_last_name %><br>
+    <%= f.text_field :m_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :m_dob %><br>
+    <%= f.text_field :m_dob %>
+  </div>
+  <div class="field">
+    <%= f.label :ref1_name %><br>
+    <%= f.text_field :ref1_name %>
+  </div>
+  <div class="field">
+    <%= f.label :ref1_relation %><br>
+    <%= f.text_field :ref1_relation %>
+  </div>
+  <div class="field">
+    <%= f.label :ref2_name %><br>
+    <%= f.text_field :ref2_name %>
+  </div>
+  <div class="field">
+    <%= f.label :ref2_relation %><br>
+    <%= f.text_field :ref2_relation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

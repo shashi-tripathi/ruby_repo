@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @education.grade %>
+</p>
+
+<p>
+  <strong>Institute:</strong>
+  <%= @education.institute %>
+</p>
+
+<p>
+  <strong>Institute type:</strong>
+  <%= @education.institute_type %>
+</p>
+
+<p>
+  <strong>Institute country:</strong>
+  <%= @education.institute_country %>
+</p>
+
+<p>
+  <strong>Institute state:</strong>
+  <%= @education.institute_state %>
+</p>
+
+<p>
+  <strong>Institue city:</strong>
+  <%= @education.institue_city %>
+</p>
+
+<p>
+  <strong>Institute website:</strong>
+  <%= @education.institute_website %>
+</p>
+
+<p>
+  <strong>Institute email:</strong>
+  <%= @education.institute_email %>
+</p>
+
+<p>
+  <strong>Institute phone:</strong>
+  <%= @education.institute_phone %>
+</p>
+
+<p>
+  <strong>Teacher name:</strong>
+  <%= @education.teacher_name %>
+</p>
+
+<p>
+  <strong>Teach email:</strong>
+  <%= @education.teach_email %>
+</p>
+
+<p>
+  <strong>Teacher phone:</strong>
+  <%= @education.teacher_phone %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @education.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_education_path(@education) %> |
+<%= link_to 'Back', educations_path %>

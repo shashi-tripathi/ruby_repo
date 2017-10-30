@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sent to:</strong>
+  <%= @contact.sent_to %>
+</p>
+
+<p>
+  <strong>Sent from:</strong>
+  <%= @contact.sent_from %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @contact.message %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

@@ -1,0 +1,128 @@
+   <%= javascript_include_tag 'personal_details' %>
+  <%= javascript_include_tag 'personal-detail-validator' %>
+  <%= form_for(@personal_detail,remote:true,html: { class: "form-horizontal" ,id:"studentForm",method:"post"}) do |f| %>
+  <div class="col-sm-offset-4" id="message"></div>
+  <div class="col-sm-offset-4">
+      <div class="notice" >
+          <% if flash[:notice] %>
+             <div class="notice"><%= flash[:notice] %></div>
+          <% end %>
+        </div>
+   <% if @personal_detail.errors.any? %>
+      <div id="error_explanation">
+      <h2><%= pluralize(@personal_detail.errors.count, "error") %>
+      prohibited this user from being saved:</h2>
+      <ul>
+      <% @personal_detail.errors.full_messages.each do |msg| %>
+      <li style="color:red"><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+
+   <div class="panel panel-success">
+         <div class="panel-heading">
+               Student Personal Details
+         </div>
+
+   <div class="panel-body" id="pdetails">
+   <form>
+   	 <div class="form-group required">
+           <label for="personal_detail[first_name]" class="control-label">First Name</label>
+            <%= f.text_field :first_name,class: 'form-control ',placeholder: "Your First Name"%>
+     </div>
+      <div class="form-group required">
+           <label for="personal_detail[middle_name]" class="control-label">Middle Name</label>
+           <%= f.text_field :middle_name,class: 'form-control',placeholder: "Your Middle Name",id:'middleName'
+             %>
+       </div>
+       <div class="form-group required">
+              <label for="personal_detail[last_name]" class="control-label">Last Name</label>
+              <%= f.text_field :last_name,class: 'form-control',placeholder: "Your Last Name"%>
+         </div>
+         <div class="form-group required">
+              <label for="personal_detail[dob]" class="control-label">Birth Date</label>
+               <%= f.text_field :dob,class: 'form-control',placeholder: "Date of Birth(MM/DD/YYYY)",id:'datepicker'%>
+       </div>
+        <div class="form-group required">
+            <label for="personal_detail[gender]" class="control-label">Gender</label>
+             <label class="btn btn-info">
+                <%= f.radio_button(:gender, "1",:checked => (@personal_detail.gender.eql? 1.to_s) ? true :false  ) %>Female
+                </label>
+                <label class="btn btn-info">
+                    <%= f.radio_button(:gender, "2",:checked => (@personal_detail.gender.eql? 2.to_s) ? true : false ) %>
+                       Male
+                </label>
+       </div> 
+       <div class="form-group required">
+          <label for="personal_detail[sibling]" class="control-label">Sibling</label>
+               <label class="btn btn-info">
+                       <%= f.radio_button(:sibling, "1",:checked => (@personal_detail.sibling.eql? 1.to_s) ? true :false ) %>Yes
+                    </label>
+                    <label class="btn btn-info">
+                  <%= f.radio_button(:sibling, "2",:checked => (@personal_detail.sibling == 2) ? true :false ) %>No
+                    </label>
+         </div> 
+          <div id="sibling1">
+          <div class="form-group">
+          <label for="personal_detail[s_first_name]" class="control-label">S.First Name</label>
+                 <%= f.text_field :s_first_name,class: 'form-control',placeholder: "Sibling First Name",id:'sfirstname'%>
+           </div>
+          <div class="form-group">
+        	 <label for="personal_detail[s_middle_name]" class="control-label">S.Middle Name</label>
+             <%= f.text_field :s_middle_name,class: 'form-control',placeholder: "Sibling Middle Name",id:'smiddlename'%>                
+         </div>
+          <div class="form-group">
+          	<label for="personal_detail[s_last_name]" class=" control-label">S. Last Name</label>
+          	 <%= f.text_field :s_last_name,class: 'form-control',placeholder: "Sibling Last Name",id:'slastname'%>
+          </div>
+           <div class="form-group">
+	          <label for="personal_detail[s_dob]" class="control-label">S.Birth Date</label>
+	          <%= f.text_field :s_dob,class: 'form-control',placeholder: "S. DOB(MM/DD/YYYY)",id:'datepicker1'%>
+           </div>
+         </div>
+         
+          <div class="form-group required">
+                <label for="personal_detail[f_first_name]" class="control-label">F. First Name</label>
+                <%= f.text_field :f_first_name,class: 'form-control',placeholder: "Father First Name",id:'ffirstname'%>
+           </div>
+           <div class="form-group required">
+               <label for="personal_detail[f_last_name]" class="control-label">F. Last Name</label>
+                <%= f.text_field :f_last_name,class: 'form-control',placeholder: "Father Last Name",id:'flastname'%>
+          </div>
+           <div class="form-group required">
+                <label for="personal_detail[m_first_name]" class="control-label">M. First Name</label>
+                 <%= f.text_field :m_first_name,class: 'form-control',placeholder: "Mother First Name",id:'mfirstname'%>
+           </div>
+           <div class="form-group required">
+               <label for="personal_detail[m_last_name]" class="control-label">M. Last Name</label>
+               <%= f.text_field :m_last_name,class: 'form-control',placeholder: "Mother Last Name",id:'mlastname'%>
+            </div>
+			 <div class="form-group required">
+                <label for="personal_detail[ref1_name]" class="control-label">Ref1 Name</label>
+                <%= f.text_field :ref1_name,class: 'form-control',placeholder: "Reference1 Name" %>
+              </div>
+            <div class="form-group required">
+                <label for="personal_detail[ref1_relation]" class="control-label">Ref1 Relation</label>
+                <%= f.text_field :ref1_relation,class: 'form-control',placeholder: "Reference1 Relation"%>
+            </div>
+            <div class="form-group">
+                <label for="personal_detail[ref2_name]" class="control-label">Ref2  Name</label>
+                   <%= f.text_field :ref2_name,class: 'form-control',placeholder: "Reference2 Name",id:'ref2name'%>
+             </div>
+             <div class="form-group ">
+                <label for="personal_detail[ref2_relation]" class="control-label">Ref2 Relation</label>
+                 <%= f.text_field :ref2_relation,class: 'form-control',placeholder: "Reference2 Relation",id:'ref2relation'%>
+              </div>
+ </form>   	
+ </div>   
+
+  <div class="panel-footer ">
+      <button id="btnSubmit" type="submit" class="btn btn-success btn-lg col-sm-offset-9">Save</button>
+      <button type="reset" class="btn btn-danger btn-lg">Reset</button>
+</div>
+</div>
+        
+   
+<% end %>

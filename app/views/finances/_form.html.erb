@@ -1,0 +1,62 @@
+<%= form_for(@finance) do |f| %>
+  <% if @finance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@finance.errors.count, "error") %> prohibited this finance from being saved:</h2>
+
+      <ul>
+      <% @finance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :father_profs %><br>
+    <%= f.number_field :father_profs %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_profess %><br>
+    <%= f.number_field :mother_profess %>
+  </div>
+  <div class="field">
+    <%= f.label :father_income %><br>
+    <%= f.number_field :father_income %>
+  </div>
+  <div class="field">
+    <%= f.label :88 %><br>
+    <%= f.number_field :mother_income %>
+  </div>
+  <div class="field">
+    <%= f.label :other_income %><br>
+    <%= f.number_field :other_income %>
+  </div>
+  <div class="field">
+    <%= f.label :economic_status %><br>
+    <%= f.number_field :economic_status %>
+  </div>
+  <div class="field">
+    <%= f.label :income_document %><br>
+    <%= f.number_field :income_document %>
+  </div>
+  <div class="field">
+    <%= f.label :rationa_card %><br>
+    <%= f.number_field :rationa_card %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_statement %><br>
+    <%= f.number_field :bank_statement %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_name %><br>
+    <%= f.number_field :bank_name %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account_no %><br>
+    <%= f.text_field :bank_account_no %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

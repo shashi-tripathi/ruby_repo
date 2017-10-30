@@ -1,0 +1,1 @@
+json.extract! @education, :id, :grade, :institute, :institute_type, :institute_country, :institute_state, :institue_city, :institute_website, :institute_email, :institute_phone, :teacher_name, :teach_email, :teacher_phone, :user_id, :created_at, :updated_at

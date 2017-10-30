@@ -1,0 +1,40 @@
+<%= form_for(:session, html: { class: "form-horizontal" ,id:"loginForm",method:"post"},url: sessions_path) do |f| %>
+<div class="panel panel-success">
+         <div class="panel-heading">
+               Sign In
+         </div>
+  <div class="row">       
+  <div class="col-lg-offset-4 col-lg-8">
+<% flash.each do |key, value| %>
+	<div class="" style="color:#FF0000" class="alert alert-error ">
+		<%= value %>
+	</div>
+<% end %>
+</div>
+</div>
+ <div class="panel-body">
+ 	<div class="form-group required">
+	 	 <label for="user[email]" class="control-label col-xs-12 col-lg-offset-2 col-lg-2 text-right"><%= f.label :email %></label>
+	 	 <div class="col-lg-6 col-xs-12">
+			<%= f.text_field :email,class: 'form-control input-large',placeholder: "Email Address" %>
+		 </div>
+		 <div class="col-lg-offset-2"/>
+		</div>
+	</div>
+	<div class="form-group required">
+		<label for="session[password]" class="control-label col-xs-12 col-lg-offset-2 col-lg-2 text-right"><%= f.label :password %></label>
+ 		<div class="col-lg-6 col-xs-12">
+			<%= f.password_field :password,class: 'form-control input-large',placeholder: "Password"%>
+		</div>
+		<div class="col-lg-offset-2"></div>
+	 </div>
+  </div>
+   <div class="panel-footer ">
+      <%= f.submit "Sign in", class: "col-lg-offset-4 btn btn-large btn-success" %>
+      <button type="reset" class="btn btn-danger btn-large">Reset</button>
+  </div>
+</div>
+<div class="col-lg-offset-8 col-lg-4 col-xs-12">Do not have account
+ 	<%= link_to 'Register here', '/signup' %>
+</div>
+<% end %>
